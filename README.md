@@ -18,6 +18,58 @@ Once you unzip this file, simply double click the SDK application to run it.  Yo
 
 To view the building blocks used in this project, launch the SDK, click the three layer sandwich menu button on the left, select 'Display Information', and then click 'Show Callout'.
 
+## Building an Application
+
+While this tool can be applied to existing projects using simple code, we will also walk through creating a simple map application for this tutorial.  Follow the steps below:
+
+1. Launch AppStudio (on desktop, not web). 
+(Note: if you wish to publish this application, you will also need to sign in with an ArcGIS Online account using the button at the top right of the AppStudio window)
+
+2. Click on the New App button in the top toolbar.
+
+3. Select the Hello World (Runtime) tile.
+
+4. Type in your desired application name in the Title bar to the right.
+
+5. Click Create.
+
+You will now be taken back to the AppStudio for ArcGIS dashboard.  If you select your new application tile from the list of available applications, you will get a menu bar along the right with buttons for Settings, Run, Edit, etc...
+
+To test out your new application, use the Run button.  Go ahead, take it for a spin (you know you want to)!
+
+## Editing your Application and Adding the Magnifier Tool
+
+This nifty tool can be added with a single line of code!
+
+All you need to do is access the Qt IDE by selecting the Edit button ({;}) next to Run in the right-hand menu bar.
+
+Within your MapView settings, simply add the following under the MapView heading:
+
+```
+	MapView {
+		id:mapView
+
+		// add code
+		magnifierEnabled: true
+
+		anchors{
+			//.... the rest of your code goes here ...
+		}
+	}
+```
+
+That's it!  You're all done.  But we want to make sure we have something go magnify, so let's change a few additional settings to get a basemap that contains imagery instead of the standard topo:
+
+1. Under your MapView heading, locate the Map{ section.
+2. Change the BasemapTopography{} to BasemapImageryWithLabels{}
+3. Under the basemap heading you just changed, change the viewpoint settings (x and y) to a location that is interesting to you.  I chose SeaTac airport.
+
+```
+
+```
+
+
+Now, save your changes, close out the Qt IDE, reopen your AppStudio window and launch the application.
 
 ## Using the Magnifier
 
@@ -29,34 +81,11 @@ To move the tool, simply pan (or move the mouse) while continuing to touch (or c
 
 To remove the tool, simply lift your finter (or unclick).
 
-Pretty schnazzy!
+Pretty schnazzy! You've just created or modified an application using QML language!
 
 ![](screenshot1.jpg)
 ![](screenshot2.jpg)
 
-## Putting the Magnifier in your App
-
-This nifty tool can be added with a single line of code!
-
-Within your MapView settings, simply add the following:
-
-```
-magnifierEnabled: true
-```
-
-That's it!  Your final code should look something like this (for full code, see MagnifierTool.qml):
-```
-MapView {
-	id: mapView
-	anchors.fill: parent
-
-	\\ here, we enable the magnifier
-	magnifierEnabled: true
-
-	Map {....map info...
-	}
-}
-```
 
 ## Acknowledgement
 

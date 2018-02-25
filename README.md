@@ -62,9 +62,32 @@ That's it!  You're all done.  But we want to make sure we have something go magn
 
 1. Under your MapView heading, locate the Map{ section.
 2. Change the BasemapTopography{} to BasemapImageryWithLabels{}
-3. Under the basemap heading you just changed, change the viewpoint settings (x and y) to a location that is interesting to you.  I chose SeaTac airport.
+3. Under the basemap heading you just changed, change the viewpoint settings (x and y) to a location that is interesting to you.  I chose an airfield similar to the one used in the SDK docs.
 
 ```
+        // add a basemap (I chose imagery for more detail)
+        Map{
+            id:map
+
+            BasemapImageryWithLabels{}
+            onLoadStatusChanged: {
+                if (loadStatus === Enums.LoadStatusLoaded) {
+                        mapView.setViewpoint(initialViewpoint);
+                }
+            }
+        }
+        ViewpointCenter {
+            id: initialViewpoint
+	    
+	    // I changed the viewpoint to an airfield for a more interesting view.
+            center: Point {
+                x: -110.8258
+                y: 32.1545089
+                spatialReference: SpatialReference {wkid: 4326}
+            }
+            targetScale: 2e4
+        }
+    }
 
 ```
 
@@ -89,4 +112,4 @@ Pretty schnazzy! You've just created or modified an application using QML langua
 
 ## Acknowledgement
 
-Thank you to Michael-Tims et all, for your original [GitHub tutorial]().
+This information was modified from the [ArcGIS Runtime SDK documentation site](https://developers.arcgis.com/qt/latest/qml/sample-code/sample-qt-showmagnifier.htm).

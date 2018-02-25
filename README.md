@@ -106,8 +106,8 @@ To remove the tool, simply lift your finter (or unclick).
 
 Pretty schnazzy! You've just created or modified an application using QML language!
 
-![](screenshot1.jpg)
-![](screenshot2.jpg)
+![](screenshot1.png)
+![](screenshot2.png)
 
 
 ## Acknowledgement
